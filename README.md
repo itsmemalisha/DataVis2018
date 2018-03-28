@@ -1,2 +1,2 @@
-# DataVis2018
+# itsmemalisha.github.io
 Alina Bazaeva, alina.bazaeva@niuitmo.ru
