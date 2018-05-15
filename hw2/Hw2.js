@@ -1,4 +1,14 @@
-
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Homework2</title>
+	<script src="http://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+	<h1>Homework#2</h1>
+	<script src="http://d3js.org/d3.v4.min.js"></script>
+<script>
       var format = {
   'string': function(t) { return t;},
   'float': d3.format('.1f'),
