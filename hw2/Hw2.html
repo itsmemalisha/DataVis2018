@@ -65,8 +65,7 @@ var Index;
 var years = ['1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012']
 
 //  Get json data
-d3.json('https://itsmemalisha.github.io/hw2/countries_2012.json', function(error, jsonData) {
-  // Create timeline
+d3.json('https://alexanderkub.github.io/DataVis/data/countries_2012.json', function(error, jsonData) {
 d3.json('https://itsmemalisha.github.io/hw2/countries_1995_2012.json', function(error, timeData) { 
   var timeline = d3.select('body').append('div')
     .attr('class', 'controller-row').text('Time update:');
