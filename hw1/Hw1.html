@@ -1,30 +1,68 @@
-<!DOCTYPE HTML>
 <html>
- <head>
-  <meta charset="utf-8">
-  <title>First VIS101 Homework</title>
-  <style>
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-  </style>
-  <link rel="stylesheet" href="style.css">
- </head>
+<head>
+	<meta charset="UTF-8">
+	<title>First VIS101 Homework</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+</head>
 <body>
-	<h1>First VIS101 Homework</h1>
+
+	<p><font size="10" color="red" face="Arial">HOMEWORK1</font></p>
+
 	<h2>Quote Of the Day:<h2>
-  <div class="line"></div>
-  
-	<h3><blockquote id = "quo">All successful men and women are big dreamers. They imagine what their future could be, ideal in every respect, and then they work every day toward their distant vision, that goal or purpose. (Brian Tracy)</blockquote><h3>
-	<button id = "but">Change Quote Of the Day</button>
+	
+	<svg width = 5 height = 50></svg>
+	<blockquote id = "quo">CHOSE YOUR HERO.</blockquote>
+	<button id = "but">Change quote of the day</button>
+	<select id = "DropDown"></select>
+
 	<script>  
-	var Quotes = ["Success is the child of audacity. (Benjamin Disraeli)","Success is one percent inspiration, ninety-nine percent perspiration. (Thomas Edison)","Fall seven times and stand up eight. (Japanese Proverb)","There are people who have money and people who are rich. (Coco Chanel)","Nothing is impossible, the word itself says, I’m possible! (Audrey Hepburn)","Don’t cry because it’s over, smile because it happened. (Dr. Seuss)","When love is not madness it is not love. (Pedro Calderon de la Barca)","Have no fear of perfection; you’ll never reach it. (Salvador Dali)","Only two things are infinite — the universe and human stupidity, and I’m not sure about the former. (Albert Einstein)"]
-	var i=0
-	document.getElementById("but").onclick = function () 
-	{  
-		i++
-	   	document.getElementById("quo").innerHTML = Quotes[i]
-    if (i < Quotes.length - 1) {}
-	else {i=-1}		
+
+	var getJSON = function(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status === 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status, xhr.response);
+      }
+    };
+    xhr.send();
+	};
+
+	getJSON("https://raw.githubusercontent.com/4skinSkywalker/Database-Quotes-JSON/master/quotes.json", function (err, data) {
+
+
+	var select = document.getElementById("DropDown")
+				for(var i = 0; i < data.length; i++) {
+  	 			var opt = document.createElement("option");
+    				if (data[i].quoteAuthor === "") { 
+    					opt.innerHTML = "Unknown Author"
+    					opt.value = '"' + data[i].quoteText + '"' + ' - ' + "Unknown Author";
+    				} else {
+    				opt.innerHTML = data[i].quoteAuthor;
+    				opt.value = '"' + data[i].quoteText + '"' + ' - ' + data[i].quoteAuthor;}
+    				select.appendChild(opt);
+   			}
+    			document.getElementById("DropDown").onchange = function (event) {
+ 					document.getElementById("quo").innerHTML = event.target.value;
+				}
+
+
+	
+	
+document.getElementById("but").onclick = function () {
+	var number = ["1","2","3","4","5","6","7","8","9","10"]
+	i = (i+1)%number.length 
+document.getElementById("quo").innerHTML = '"' + data[i].quoteText + '"' + " - " +data[i].quoteAuthor
 	}
-	</script>  
- </body>
+
+	})
+	
+	</script>
+</body>
 </html>
