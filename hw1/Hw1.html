@@ -7,32 +7,30 @@
 
 </head>
 <body>
-
-	<p><font size="10" color="red" face="Arial">HOMEWORK1</font></p>
-
-	<h2>Quote Of the Day:<h2>
 	
+	<p><font size="10" color="red" face="Arial">HOMEWORK1</font></p>
+	<h2>Quote Of the Day:<h2>
 	<svg width = 5 height = 50></svg>
 	<blockquote id = "quo">CHOSE YOUR HERO.</blockquote>
 	<button id = "but">Change quote of the day</button>
 	<select id = "DropDown"></select>
 
-	<script>  
+<script>  
 
-	var getJSON = function(url, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.responseType = 'json';
-    xhr.onload = function() {
-      var status = xhr.status;
-      if (status === 200) {
-        callback(null, xhr.response);
-      } else {
-        callback(status, xhr.response);
-      }
-    };
-    xhr.send();
-	};
+var getJSON = function(url, callback) {
+var xhr = new XMLHttpRequest();
+xhr.open('GET', url, true);
+xhr.responseType = 'json';
+xhr.onload = function() {
+var status = xhr.status;
+if (status === 200) {
+callback(null, xhr.response);
+} else {
+callback(status, xhr.response);
+}
+};
+xhr.send();
+};
 
 	getJSON("https://raw.githubusercontent.com/4skinSkywalker/Database-Quotes-JSON/master/quotes.json", function (err, data) {
 
@@ -47,22 +45,18 @@
     				opt.innerHTML = data[i].quoteAuthor;
     				opt.value = '"' + data[i].quoteText + '"' + ' - ' + data[i].quoteAuthor;}
     				select.appendChild(opt);
-   			}
-    			document.getElementById("DropDown").onchange = function (event) {
- 					document.getElementById("quo").innerHTML = event.target.value;
+   				}
+	document.getElementById("DropDown").onchange = function (event) {
+ 				document.getElementById("quo").innerHTML = event.target.value;
 				}
 
-
-	
-	
-document.getElementById("but").onclick = function () {
+	document.getElementById("but").onclick = function () {
 	var number = ["1","2","3","4","5","6","7","8","9","10"]
 	i = (i+1)%number.length 
-document.getElementById("quo").innerHTML = '"' + data[i].quoteText + '"' + " - " +data[i].quoteAuthor
+	document.getElementById("quo").innerHTML = '"' + data[i].quoteText + '"' + " - " +data[i].quoteAuthor
 	}
-
 	})
 	
-	</script>
+</script>
 </body>
 </html>
